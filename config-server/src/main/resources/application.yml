@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: config-server
+
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/singh6329/linkedin-config-server
+          username: singh6329
+          password: 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
+          default-label: master
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+server:
+  port: 8888
