@@ -1,1 +1,2 @@
 GlobalConfigs
+./config-server/src/main/resources/application.yml
