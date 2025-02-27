@@ -27,6 +27,10 @@ public class Posts {
     @Column(nullable = false)
     private String content;
 
+    private Long likesCount;
+
+    private Long commentsCount;
+
     @CreationTimestamp
     private LocalDateTime createdAt;
 }

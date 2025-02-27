@@ -14,5 +14,9 @@ public class PostsDto {
 
     private String content;
 
+    private Long likesCount;
+
+    private Long commentsCount;
+
     private LocalDateTime createdAt;
 }

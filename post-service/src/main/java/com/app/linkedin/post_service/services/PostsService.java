@@ -12,4 +12,16 @@ public interface PostsService {
     PostsDto getPostById(Long postId);
 
     List<PostsDto> getAllPostsOfUser(Long userId);
+
+    void deletePost(Long postId);
+
+    void increaseLikesCounterOfPosts(Long postId);
+
+    void decreaseLikesCounterOfPost(Long postId);
+
+    void increaseCommentsCounterOfPosts(Long postId);
+
+    void decreaseCommentsCounterOfPosts(Long postId);
+
+    Boolean existsByPostId(Long postId);
 }

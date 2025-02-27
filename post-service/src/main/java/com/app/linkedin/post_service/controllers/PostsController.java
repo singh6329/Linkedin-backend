@@ -18,21 +18,34 @@ public class PostsController {
 
     private final PostsService postsService;
 
-    @PostMapping
-    public ResponseEntity<PostsDto> createPost(@RequestBody PostRequestDto postRequestDto)
-    {
-        return new ResponseEntity<>(postsService.createPost(postRequestDto), HttpStatus.CREATED);
-    }
-
     @GetMapping("/{postId}")
     public ResponseEntity<PostsDto> getPost(@PathVariable(name = "postId") Long postId)
     {
         return new ResponseEntity<>(postsService.getPostById(postId),HttpStatus.OK);
     }
 
-    @GetMapping("/users/{userId}/getAllPosts")
+    @GetMapping("/exists/{postId}")
+    public Boolean existsByPostId(@PathVariable Long postId)
+    {
+        return postsService.existsByPostId(postId);
+    }
+
+    @GetMapping("/users/{userId}/get-all-posts")
     public ResponseEntity<List<PostsDto>> getAllPostsOfUser(@PathVariable(name = "userId")Long userId)
     {
         return new ResponseEntity<>(postsService.getAllPostsOfUser(userId),HttpStatus.OK);
+    }
+
+    @PostMapping
+    public ResponseEntity<PostsDto> createPost(@RequestBody PostRequestDto postRequestDto)
+    {
+        return new ResponseEntity<>(postsService.createPost(postRequestDto), HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/{postId}")
+    public ResponseEntity<Void> deletePost(@PathVariable Long postId)
+    {
+        postsService.deletePost(postId);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
